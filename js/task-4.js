@@ -1,45 +1,21 @@
-const clients = [
-	{
-    name: "Moore Hensley",
-    gender: "male",
-    balance: 2811
-  },
-  {
-    name: "Sharlene Bush",
-    gender: "female",
-    balance: 3821
-  },
-  {
-    name: "Ross Vazquez",
-    gender: "male",
-    balance: 3793
-  },
-  {
-    name: "Elma Head",
-    gender: "female",
-    balance: 2278
-  },
-  {
-    name: "Carey Barr",
-    gender: "male",
-    balance: 3951
-  },
-  {
-    name: "Blackburn Dotson",
-    gender: "male",
-    balance: 1498
-  },
-  {
-    name: "Sheree Anthony",
-    gender: "female",
-    balance: 2764
-  }
-];
-const getTotalBalanceByGender = (users, gender) => {
-    return users.filter(user => user.gender === gender)
-        .map(user => user.balance)
-    .reduce((total, add) => total+= add, 0)
+const regForm = document.querySelector('.login-form');
+regForm.addEventListener('submit', Submit);
+function Submit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const login = form.elements.email.value;
+    const password = form.elements.password.value;
+    if (login === "" || password === "") {
+      alert("Please fill in all the fields!");
+      return
+    };
+      console.log(`Login: ${login}, Password: ${password}`);
+  form.reset();
 }
-console.log(getTotalBalanceByGender(clients, "male")); // 12053
 
-console.log(getTotalBalanceByGender(clients, "female")); // 8863
+const inputs = document.querySelectorAll('.login-input');
+inputs.forEach(input =>{input.addEventListener('focus', () =>
+{ input.placeholder = 'Type area' })
+input.addEventListener('blur', () =>
+{input.placeholder =''})
+})
